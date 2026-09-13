@@ -1,0 +1,46 @@
+Copyright (c) 2026 Team Beevil Knievel. All rights reserved.
+
+Submitted for the Smart India Hackathon 2026, Problem Statement 26021.
+
+
+ORIGINAL WORK
+-------------
+
+The following are the original work of Team Beevil Knievel and are made
+available for evaluation purposes only. No permission is granted to copy,
+modify, distribute, sublicense or make commercial use of them without prior
+written consent from the authors.
+
+  firmware/          nRF52840 sensor node firmware and LoRa telemetry protocol
+  gateway/           LoRa receiver, local store and blockchain bridge
+  farmer_ui/         beekeeper companion application
+  hardware/          bill of materials, pinout and enclosure design
+  matlab/            analytical models
+  simulations/       Ansys studies and results
+  Cloud Model/       colony pathology advisor
+  TinyML Model/      on-node acoustic classifier
+  docs/              architecture, validation and deployment documentation
+
+together with all modifications and additions made by Team Beevil Knievel to
+the third party components described below.
+
+
+THIRD PARTY WORK
+----------------
+
+This repository also incorporates MIT licensed work by another team. That work
+remains under its original licence, which permits reuse by anyone, and its
+copyright and permission notice are reproduced in the NOTICE file in the root
+of this repository.
+
+The terms above apply only to the original work of Team Beevil Knievel. They do
+not restrict, and cannot restrict, any rights granted by the MIT licence over
+the third party components. See NOTICE for the full attribution.
+
+
+NO WARRANTY
+-----------
+
+This software is provided "as is", without warranty of any kind, express or
+implied. The authors accept no liability for any claim, damages or other
+liability arising from its use.
