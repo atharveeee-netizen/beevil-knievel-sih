@@ -117,6 +117,9 @@ drop shock, modal isolation from the bee band, switching flux at the sensor, in 
 airflow, battery winter thermal, wind load, bus signal integrity, microphone trace
 parasitics, and solar harvest.
 
+**Full solver output.** The workbench binaries and full resolution renders
+are published outside git: https://drive.google.com/drive/folders/1mcRlA34NsPGypRmftliZy71pt72OI7e1?usp=sharing
+
 **Where.** `simulations/screenshots_for_judges/` (the eleven result figures),
 `hardware/` (bill of materials and pinout), `docs/` (deployment and reproducibility),
 `tests/simulate_100_hives.py` (scaling load test)
