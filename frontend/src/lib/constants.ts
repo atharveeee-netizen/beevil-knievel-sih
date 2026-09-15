@@ -12,6 +12,14 @@ export const HONEYCHAIN_CONTRACT_ADDRESS =
 export const HONEYCHAIN_QR_CONTRACT_ADDRESS =
   process.env.NEXT_PUBLIC_QR_CONTRACT_ADDRESS || "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
+/**
+ * True when the app is pointed at a local development chain rather
+ * than a public network, so copy can name the network honestly.
+ */
+export const IS_LOCAL_CHAIN = (
+  process.env.NEXT_PUBLIC_RPC_URL ?? ""
+).match(/127\.0\.0\.1|localhost/) !== null;
+
 export const POLYGON_AMOY_RPC =
   process.env.NEXT_PUBLIC_RPC_URL || "https://rpc-amoy.polygon.technology";
 

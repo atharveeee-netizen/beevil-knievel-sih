@@ -18,7 +18,7 @@ import DBTPayoutCard from "@/components/DBTPayoutCard";
 import VerifiableCredentialModal from "@/components/VerifiableCredentialModal";
 import UnderCapPinClaimModal from "@/components/UnderCapPinClaimModal";
 import { fetchBatchById, fetchBatchByQR } from "@/lib/contract";
-import { POLYGON_AMOY_RPC } from "@/lib/constants";
+import { POLYGON_AMOY_RPC, IS_LOCAL_CHAIN } from "@/lib/constants";
 import { exportHoneyBatchCredential } from "@/lib/vc-serializer";
 import { generateCertificatePDF } from "@/lib/pdf-certificate";
 import { generateExportPassportPDF } from "@/lib/export-passport";
@@ -294,7 +294,10 @@ export default function ConsumerVerificationPage() {
                   {t("complianceBadge")}
                 </h2>
                 <p className="text-xs text-warm-grey max-w-md">
-                  Cryptographically secured by KVIC Regional Honey Protocol. Batch records are anchored to Polygon PoS and IPFS storage.
+                  Cryptographically secured by KVIC Regional Honey Protocol.{" "}
+                  {IS_LOCAL_CHAIN
+                    ? "Batch records are anchored on chain with IPFS storage. This demonstration runs against a local chain; the architecture is network agnostic."
+                    : "Batch records are anchored to Polygon PoS and IPFS storage."}
                 </p>
               </div>
             </div>
