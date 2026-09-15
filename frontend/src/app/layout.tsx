@@ -86,12 +86,19 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LanguageProvider>
+          {/* First stop for a keyboard or screen reader user, so the masthead
+              and navigation can be skipped on every page. */}
+          <a href="#main-content" className="skip-to-content">
+            Skip to main content
+          </a>
           {/* The film-grain overlay and the decorative vertical hairlines were
               removed with the redesign. Both were texture for its own sake,
               and both are signatures of the editorial template look this
               interface is moving away from. */}
           <GovMasthead />
-          <div className="relative z-10 pb-44 md:pb-0">{children}</div>
+          <main id="main-content" className="relative z-10 pb-44 md:pb-0">
+            {children}
+          </main>
           <MobileBottomNav />
           <IoTStageController />
           <JudgeEvaluationBrief />
