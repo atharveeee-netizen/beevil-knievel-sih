@@ -65,8 +65,8 @@ export const DEMO_BATCHES = [
     batchId: 1,
     farmer: {
       farmerId: 1,
-      name: "Sample Beekeeper — Bihar",
-      location: "Muzaffarpur, Bihar",
+      name: "Mahesh Prasad Singh",
+      location: "Kanti Block, Muzaffarpur, Bihar",
       cooperativeId: "KVIC-BH-002",
       ipfsProfileHash: "bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi",
       isVerified: true,
@@ -126,8 +126,8 @@ export const DEMO_BATCHES = [
     batchId: 2,
     farmer: {
       farmerId: 2,
-      name: "Sample Cooperative — Sundarbans",
-      location: "Sundarbans Biosphere Reserve, West Bengal",
+      name: "Anjali Mondal",
+      location: "Gosaba Island, Sundarbans, West Bengal",
       cooperativeId: "KVIC-WB-019",
       ipfsProfileHash: "bafybeihdwdcefgh4dqkjv67ui9p1qwe87yu123456789abcdef",
       isVerified: true,

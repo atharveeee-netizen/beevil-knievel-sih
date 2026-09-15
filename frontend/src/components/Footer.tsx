@@ -23,7 +23,7 @@ export default function Footer() {
             </p>
             <ul className="space-y-1.5 text-sm">
               <li className="font-semibold">Khadi and Village Industries Commission (KVIC)</li>
-              <li className="text-white/75">National Bee Board &mdash; Honey Mission</li>
+              <li className="text-white/75">National Bee Board, Honey Mission</li>
               <li className="text-white/60 text-xs pt-1">
                 Ministry of Micro, Small &amp; Medium Enterprises, Government of India
               </li>

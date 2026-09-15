@@ -368,7 +368,7 @@ export default function MintBatchPage() {
                 >
                   {farmersList.map((f) => (
                     <option key={f.farmerId} value={f.farmerId}>
-                      #00{f.farmerId} — {f.name} ({f.location} - {f.cooperativeId})
+                      #00{f.farmerId} - {f.name} ({f.location} - {f.cooperativeId})
                     </option>
                   ))}
                 </select>
@@ -493,7 +493,7 @@ export default function MintBatchPage() {
                   </p>
                 </div>
                 <div className="text-right self-end md:self-auto">
-                  <span className="text-5xl font-serif font-bold text-gold">{aiScore}</span>
+                  <span className="text-5xl font-serif font-light text-gold">{aiScore}</span>
                   <span className="text-sm font-serif text-warm-grey">/100</span>
                 </div>
               </div>

@@ -389,3 +389,19 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@layer base {
+  /* Carbon sets a small positive tracking on body sizes; it is part of the
+     typographic voice rather than a rounding artefact. */
+  body {
+    letter-spacing: 0.16px;
+  }
+
+  /* Large headings carry the light cut. Carbon's display treatment is
+     weight 300 at 42px and above, which reads calmer than a bold of the
+     same size and is the system's most recognisable trait. */
+  h1, h2, .display {
+    font-weight: 300;
+    letter-spacing: -0.4px;
+  }
+}

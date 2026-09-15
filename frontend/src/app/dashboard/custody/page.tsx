@@ -137,7 +137,7 @@ export default function CustodyLoggingPage() {
                 >
                   {batches.map((b) => (
                     <option key={b.batchId} value={b.batchId}>
-                      Batch #00{b.batchId} — {b.farmer.name} ({b.qrToken} - {b.custodyChain.length} steps)
+                      Batch #00{b.batchId} - {b.farmer.name} ({b.qrToken} - {b.custodyChain.length} steps)
                     </option>
                   ))}
                 </select>

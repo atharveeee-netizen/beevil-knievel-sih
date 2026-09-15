@@ -14,14 +14,14 @@ import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 // beside running text on nearly every screen.
 const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
 
 const plexDisplay = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["300", "400", "600"],
   variable: "--font-display",
   display: "swap",
 });
@@ -35,7 +35,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://beevil-knievel.vercel.app"),
-  title: "Beevil Knievel — Blockchain Honey Authenticity & Provenance",
+  title: "Beevil Knievel - Blockchain Honey Authenticity & Provenance",
   description:
     "KVIC & National Bee Board verifiable honey authentication powered by Polygon PoS, AI quality scoring, and cryptographic QR provenance.",
   keywords: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     shortcut: "/beevil_knievel_icon.png",
   },
   openGraph: {
-    title: "Beevil Knievel — Blockchain Honey Authenticity & Provenance",
+    title: "Beevil Knievel - Blockchain Honey Authenticity & Provenance",
     description:
       "KVIC & National Bee Board verifiable honey authentication powered by Polygon PoS, AI quality scoring, and cryptographic QR provenance.",
     images: [{ url: "/beevil_knievel_og.png", width: 1200, height: 630, alt: "Beevil Knievel" }],

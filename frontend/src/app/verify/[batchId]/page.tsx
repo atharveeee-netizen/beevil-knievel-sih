@@ -228,7 +228,7 @@ export default function ConsumerVerificationPage() {
                 {/* Was text-8xl at desktop, which filled the viewport and
                     pushed the actual provenance record below the fold. A
                     verification result should lead with the record. */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight break-words">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight leading-tight break-words">
                   {t("heroSubtitle1")} <span className="text-gold">{t("heroSubtitle2")}</span> {t("heroSubtitle3")}
                 </h1>
 

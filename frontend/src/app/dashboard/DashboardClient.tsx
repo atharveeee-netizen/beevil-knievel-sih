@@ -284,7 +284,7 @@ export default function DashboardClient({ user }: { user: SessionUser }) {
               <span className="w-3 h-3 bg-emerald-500 animate-pulse" />
               <div className="flex-1">
                 <p className="font-bold text-charcoal text-sm">{t("dashAllSystemsLive")}</p>
-                <p className="text-xs text-emerald-700">Polygon PoS RPC • FastAPI NMR Service • IPFS Gateway • SSE IoT Stream — all live</p>
+                <p className="text-xs text-emerald-700">Polygon PoS RPC • FastAPI NMR Service • IPFS Gateway • SSE IoT Stream - all live</p>
               </div>
               <span className="text-[10px] font-mono font-bold text-emerald-800 uppercase tracking-widest">99.97% uptime</span>
             </div>
@@ -316,7 +316,7 @@ export default function DashboardClient({ user }: { user: SessionUser }) {
                   {complaints.slice(0, 5).map((c, i) => (
                     <div key={i} className="p-4 border border-charcoal/10 bg-[#EEF1F4] flex items-start justify-between gap-4">
                       <div>
-                        <p className="font-mono font-bold text-charcoal text-sm">Batch #{c.batchId} — {c.qrToken}</p>
+                        <p className="font-mono font-bold text-charcoal text-sm">Batch #{c.batchId} - {c.qrToken}</p>
                         <p className="text-xs text-rose-700 font-semibold mt-0.5">{c.reportedBy}</p>
                         <p className="text-[10px] text-warm-grey mt-1">{c.reason}</p>
                       </div>

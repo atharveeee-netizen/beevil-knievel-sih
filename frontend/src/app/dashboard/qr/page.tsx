@@ -129,7 +129,7 @@ export default function QrLabelsPage() {
                 >
                   {batches.map((b) => (
                     <option key={b.batchId} value={b.batchId}>
-                      Batch #{b.batchId} — {b.farmer.name} ({b.qrToken})
+                      Batch #{b.batchId} - {b.farmer.name} ({b.qrToken})
                     </option>
                   ))}
                 </select>
@@ -435,7 +435,7 @@ export default function QrLabelsPage() {
                         KVIC HEAVY TRANSPORT DRUM TAG
                       </span>
                       <h3 className="text-2xl serif text-alabaster font-bold">
-                        Batch #{selectedBatch.batchId} — 250 KG DRUM
+                        Batch #{selectedBatch.batchId} - 250 KG DRUM
                       </h3>
                     </div>
                     <span className="px-3 py-1 bg-emerald-500 text-charcoal font-mono font-bold text-xs uppercase">
