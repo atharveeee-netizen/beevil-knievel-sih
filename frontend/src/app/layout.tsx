@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://beevil-knievel.vercel.app"),
   title: "Beevil Knievel - Blockchain Honey Authenticity & Provenance",
   description:
-    "KVIC & National Bee Board verifiable honey authentication powered by Polygon PoS, AI quality scoring, and cryptographic QR provenance.",
+    "KVIC & National Bee Board verifiable honey authentication powered by blockchain provenance, AI quality scoring, and cryptographic QR seals.",
   keywords: [
     "Beevil Knievel",
     "KVIC",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Beevil Knievel - Blockchain Honey Authenticity & Provenance",
     description:
-      "KVIC & National Bee Board verifiable honey authentication powered by Polygon PoS, AI quality scoring, and cryptographic QR provenance.",
+      "KVIC & National Bee Board verifiable honey authentication powered by blockchain provenance, AI quality scoring, and cryptographic QR seals.",
     images: [{ url: "/beevil_knievel_og.png", width: 1200, height: 630, alt: "Beevil Knievel" }],
   },
 };

@@ -20,6 +20,14 @@ export const IS_LOCAL_CHAIN = (
   process.env.NEXT_PUBLIC_RPC_URL ?? ""
 ).match(/127\.0\.0\.1|localhost/) !== null;
 
+/** What to call the chain in user-facing copy. Derived from the
+    configured RPC so the interface cannot claim a network it is not
+    talking to. */
+export const CHAIN_LABEL = IS_LOCAL_CHAIN ? "local chain" : "Polygon PoS";
+
+/** Title-case form, for labels that begin a line. */
+export const CHAIN_LABEL_TITLE = IS_LOCAL_CHAIN ? "Local chain" : "Polygon PoS";
+
 export const POLYGON_AMOY_RPC =
   process.env.NEXT_PUBLIC_RPC_URL || "https://rpc-amoy.polygon.technology";
 

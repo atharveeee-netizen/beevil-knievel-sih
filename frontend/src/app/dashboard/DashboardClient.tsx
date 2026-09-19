@@ -9,7 +9,7 @@ import LiveTelemetryStream from "@/components/LiveTelemetryStream";
 import HiveAcousticAnalyzer from "@/components/HiveAcousticAnalyzer";
 import VoiceFieldAssistant from "@/components/VoiceFieldAssistant";
 import { useLanguage } from "@/lib/LanguageContext";
-import { DEMO_BATCHES, IS_LOCAL_CHAIN } from "@/lib/constants";
+import { DEMO_BATCHES, IS_LOCAL_CHAIN, CHAIN_LABEL_TITLE } from "@/lib/constants";
 import {
   getCustomBatches,
   getCustomFarmers,
@@ -310,7 +310,7 @@ export default function DashboardClient({ user }: { user: SessionUser }) {
               <span className="w-3 h-3 bg-emerald-500 animate-pulse" />
               <div className="flex-1">
                 <p className="font-bold text-charcoal text-sm">{t("dashAllSystemsLive")}</p>
-                <p className="text-xs text-emerald-700">Polygon PoS RPC • FastAPI NMR Service • IPFS Gateway • SSE IoT Stream - all live</p>
+                <p className="text-xs text-emerald-700">{CHAIN_LABEL_TITLE} RPC • FastAPI NMR Service • IPFS Gateway • SSE IoT Stream - all live</p>
               </div>
               <span className="text-[10px] font-mono font-bold text-emerald-800 uppercase tracking-widest">99.97% uptime</span>
             </div>
@@ -490,7 +490,7 @@ function RecentBatchesTable({ batchesList, t }: { batchesList: BatchMetadata[]; 
     <div className="border-2 border-charcoal/15 bg-white p-4 sm:p-8 shadow-sm mt-8">
       <div className="flex justify-between items-center mb-6 pb-4 border-b border-charcoal/10">
         <h3 className="text-2xl serif text-charcoal font-bold">{t("dashRecentBatches")}</h3>
-        <span className="text-[10px] uppercase tracking-widest text-charcoal font-mono font-bold">Polygon PoS</span>
+        <span className="text-[10px] uppercase tracking-widest text-charcoal font-mono font-bold">{CHAIN_LABEL_TITLE}</span>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs">
