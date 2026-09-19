@@ -389,7 +389,7 @@ export default function ConsumerVerificationPage() {
                 <p className="text-[10px] uppercase tracking-ultra text-warm-grey mb-2 font-semibold">{t("chainOfTrust")}</p>
                 <h3 className="text-4xl md:text-5xl serif text-charcoal mb-8 font-normal">{t("immutableEvidence")}</h3>
                 <p className="text-xs text-warm-grey leading-relaxed mb-10">
-                  Every honey batch is permanently anchored onto the Polygon PoS blockchain with cryptographic hashes matching the physical micro-QR seal on the jar.
+                  Every honey batch is permanently anchored on chain with cryptographic hashes matching the physical micro-QR seal on the jar.
                 </p>
 
                 <div className="space-y-6">
