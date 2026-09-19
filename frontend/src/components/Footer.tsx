@@ -22,7 +22,10 @@ const TEAM = [
 export default function Footer() {
   return (
     <footer className="bg-navy-deep text-white border-t-[3px] border-amber">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-10 sm:py-14">
+      {/* The jury brief and IoT stage controls are fixed to the bottom
+          corners, so the last lines of the footer need room to clear them
+          rather than sitting underneath. */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-10 sm:pt-14 pb-28 sm:pb-24">
         <div className="mb-8">
           <BeevilKnievelLogo size="md" variant="full" theme="dark" />
         </div>
