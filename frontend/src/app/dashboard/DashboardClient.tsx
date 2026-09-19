@@ -9,7 +9,7 @@ import LiveTelemetryStream from "@/components/LiveTelemetryStream";
 import HiveAcousticAnalyzer from "@/components/HiveAcousticAnalyzer";
 import VoiceFieldAssistant from "@/components/VoiceFieldAssistant";
 import { useLanguage } from "@/lib/LanguageContext";
-import { DEMO_BATCHES } from "@/lib/constants";
+import { DEMO_BATCHES, IS_LOCAL_CHAIN } from "@/lib/constants";
 import {
   getCustomBatches,
   getCustomFarmers,
@@ -58,6 +58,20 @@ const ROLE_LABEL: Record<Role, string> = {
 };
 
 import { DEMO_OFFICERS } from "@/lib/auth-constants";
+
+/** Honorifics carried in the stored name, so a greeting can skip them.
+    "Dr. Ananya Ray" should greet Ananya, not Dr. */
+const HONORIFICS = new Set([
+  "dr", "dr.", "shri", "smt", "smt.", "mr", "mr.", "ms", "ms.",
+  "mrs", "mrs.", "prof", "prof.", "er", "er.",
+]);
+
+function givenName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  const first = parts.findIndex((p) => !HONORIFICS.has(p.toLowerCase()));
+  return first === -1 ? (parts[0] ?? "") : parts[first];
+}
+
 
 export default function DashboardClient({ user }: { user: SessionUser }) {
   const router = useRouter();
@@ -173,7 +187,7 @@ export default function DashboardClient({ user }: { user: SessionUser }) {
               </span>
             </div>
             <h1 className="text-2xl sm:text-4xl md:text-5xl serif text-charcoal font-normal">
-              {t("dashWelcome")} <span className="text-gold font-semibold">{currentUser.name.split(" ")[0]}</span>
+              {t("dashWelcome")} <span className="text-gold font-semibold">{givenName(currentUser.name)}</span>
             </h1>
             <p className="text-xs sm:text-sm text-warm-grey mt-1 font-mono">{currentUser.email}</p>
           </div>
@@ -199,9 +213,21 @@ export default function DashboardClient({ user }: { user: SessionUser }) {
           <>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
               <StatCard icon={<Users className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashRegisteredBeekeepers")} value={farmerCount.toLocaleString("en-IN")} sub="+12 verified" />
-              <StatCard icon={<Layers className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashMintedBatches")} value={(18920 + batchesList.length - 2).toLocaleString("en-IN")} sub="Polygon PoS" />
+              <StatCard icon={<Layers className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashMintedBatches")} value={(18920 + batchesList.length - 2).toLocaleString("en-IN")} sub={IS_LOCAL_CHAIN ? "Local chain" : "Polygon PoS"} />
               <StatCard icon={<Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashAvgPurity")} value="92.8" sub="Grade A+" suffix="/100" />
-              <StatCard icon={<Activity className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashPending")} value="7" sub="Inspection" />
+              {/* The officer's actual workload, and a way to reach it. */}
+              <a
+                href="#pending-queue"
+                className="block focus-visible:outline-none"
+                aria-label={`${PENDING_REQUESTS.length} submissions awaiting inspection. Go to the queue.`}
+              >
+                <StatCard
+                  icon={<Activity className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />}
+                  label={t("dashPending")}
+                  value={String(PENDING_REQUESTS.length)}
+                  sub="Awaiting inspection"
+                />
+              </a>
             </div>
 
             <SectionLabel>{t("dashFieldOfficerActions")}</SectionLabel>
@@ -275,7 +301,7 @@ export default function DashboardClient({ user }: { user: SessionUser }) {
           <>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
               <StatCard icon={<Users className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashRegisteredBeekeepers")} value={farmerCount.toLocaleString("en-IN")} sub="29 states" />
-              <StatCard icon={<Layers className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashMintedBatches")} value={(18920 + batchesList.length - 2).toLocaleString("en-IN")} sub="Polygon PoS" />
+              <StatCard icon={<Layers className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />} label={t("dashMintedBatches")} value={(18920 + batchesList.length - 2).toLocaleString("en-IN")} sub={IS_LOCAL_CHAIN ? "Local chain" : "Polygon PoS"} />
               <StatCard icon={<AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-rose-500" />} label="Complaints" value={complaints.length.toString()} sub="Review" />
               <StatCard icon={<ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5 text-rose-600" />} label="Revoked" value="3" sub="Recalls" />
             </div>
@@ -398,14 +424,22 @@ function DarkCard({ href, icon, title, desc, cta }: { href: string; icon: React.
   );
 }
 
+/** Harvest submissions waiting on a field officer. Declared at module scope so
+    the summary tile and the queue below it cannot disagree about the count, as
+    they previously did: the tile said 7 and the table listed 3. */
+const PENDING_REQUESTS = [
+  { id: "REQ-081", farmer: "Arjun Mandal", location: "Birbhum, WB", flora: "Mustard Blossom", qty: 120, submitted: "27 Aug 2026" },
+  { id: "REQ-082", farmer: "Geeta Devi", location: "Vaishali, Bihar", flora: "Litchi", qty: 85, submitted: "26 Aug 2026" },
+  { id: "REQ-083", farmer: "Rajesh Patel", location: "Anand, Gujarat", flora: "Ajwain", qty: 200, submitted: "26 Aug 2026" },
+];
+
 function PendingRequestsTable({ t }: { t: (key: string) => string }) {
-  const pending = [
-    { id: "REQ-081", farmer: "Arjun Mandal", location: "Birbhum, WB", flora: "Mustard Blossom", qty: 120, submitted: "27 Aug 2026" },
-    { id: "REQ-082", farmer: "Geeta Devi", location: "Vaishali, Bihar", flora: "Litchi", qty: 85, submitted: "26 Aug 2026" },
-    { id: "REQ-083", farmer: "Rajesh Patel", location: "Anand, Gujarat", flora: "Ajwain", qty: 200, submitted: "26 Aug 2026" },
-  ];
+  const pending = PENDING_REQUESTS;
   return (
-    <div className="border-2 border-amber-200 bg-amber-50 p-4 sm:p-8 shadow-sm mb-12">
+    <div
+      id="pending-queue"
+      className="border-2 border-amber-200 bg-amber-50 p-4 sm:p-8 shadow-sm mb-12 scroll-mt-24"
+    >
       <div className="flex items-center gap-3 mb-6 pb-4 border-b border-amber-200">
         <ClipboardList className="w-5 h-5 text-amber-600" />
         <h3 className="text-xl serif text-charcoal font-bold">{t("dashPendingSubmissions")}</h3>
