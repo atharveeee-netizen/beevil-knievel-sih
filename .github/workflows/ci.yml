@@ -90,6 +90,32 @@ jobs:
         working-directory: frontend
         run: npm run build
 
+  farmer_app_build:
+    name: Beekeeper App Build & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 24.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: farmer_ui/package-lock.json
+
+      - name: Install Beekeeper App Dependencies
+        working-directory: farmer_ui
+        run: npm ci
+
+      - name: Typecheck
+        working-directory: farmer_ui
+        run: npx tsc --noEmit
+
+      - name: Compile Production Build
+        working-directory: farmer_ui
+        run: npx next build
+
   firmware_and_config_integrity:
     name: Firmware Configuration & Platform Integrity
     runs-on: ubuntu-latest
